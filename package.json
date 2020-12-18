@@ -1,0 +1,30 @@
+{
+  "name": "challengecryptocurrencies",
+  "version": "1.0.0",
+  "description": "Solución del reto el cuál es un wrapper de CoinGecko",
+  "main": "app.js",
+  "dependencies": {
+    "convict": "^6.0.0",
+    "express": "^4.17.1",
+    "ramda": "^0.27.1",
+    "dotenv": "^8.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  },
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegoxdc99/ChallengeCryptocurrencies.git"
+  },
+  "author": "Diego Meneses",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegoxdc99/ChallengeCryptocurrencies/issues"
+  },
+  "homepage": "https://github.com/diegoxdc99/ChallengeCryptocurrencies#readme"
+}
