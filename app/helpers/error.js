@@ -1,10 +1,5 @@
-class GeneralError extends Error {
-  constructor(statusCode, message) {
-    super();
-    this.statusCode = statusCode;
-    this.message = message;
-  }
-}
+const GeneralError = require('./errors/GeneralError');
+const JoiError = require('./errors/JoiError');
 
 const mapGeneralErrorResponse = (error) => ({
   statusCode: error.statusCode,
@@ -26,20 +21,30 @@ const mapUniqueConstraintErrorResponse = (error) => ({
   message: `Field ${Object.keys(error.fields)[0]} must by unique`,
 });
 
+const mapJoiErrorResponse = (error) => ({
+  statusCode: 400,
+  message: error.message,
+});
+
 const mappingInstanceErrors = {
   GeneralError: mapGeneralErrorResponse,
   UnauthorizedError: mapUnauthorizedErrorResponse,
   DefaultError: mapDefaultErrorResponse,
   DatabaseError: mapDefaultErrorResponse,
   UniqueConstraintError: mapUniqueConstraintErrorResponse,
+  JoiError: mapJoiErrorResponse,
 };
 
 const handleError = (err, res) => {
-  const { statusCode, message } = (mappingInstanceErrors[err.constructor.name]
-      && mappingInstanceErrors[err.constructor.name](err))
-    || mappingInstanceErrors.DefaultError(err);
+  let error = err;
+  if (error && error.error && error.error.isJoi) {
+    error = new JoiError(400, error.error.message);
+  }
+  const { statusCode, message } = (mappingInstanceErrors[error.constructor.name]
+      && mappingInstanceErrors[error.constructor.name](error))
+    || mappingInstanceErrors.DefaultError(error);
 
-  res.status(statusCode).json({
+  return res.status(statusCode).json({
     status: 'error',
     statusCode,
     message,

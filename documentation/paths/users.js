@@ -8,6 +8,9 @@ module.exports = {
         201: {
           description: 'Create user success',
         },
+        400: {
+          $ref: '#/components/responses/defaultError',
+        },
         409: {
           $ref: '#/components/responses/defaultError',
         },
