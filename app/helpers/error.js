@@ -8,14 +8,22 @@ class GeneralError extends Error {
 
 const mapGeneralErrorResponse = (error) => ({
   statusCode: error.statusCode,
+  message: error.message,
 });
 
 const mapUnauthorizedErrorResponse = (error) => ({
   statusCode: error.status,
+  message: error.message,
 });
 
-const mapDefaultErrorResponse = () => ({
+const mapDefaultErrorResponse = (error) => ({
   statusCode: 500,
+  message: error.message,
+});
+
+const mapUniqueConstraintErrorResponse = (error) => ({
+  statusCode: 409,
+  message: `Field ${Object.keys(error.fields)[0]} must by unique`,
 });
 
 const mappingInstanceErrors = {
@@ -23,11 +31,11 @@ const mappingInstanceErrors = {
   UnauthorizedError: mapUnauthorizedErrorResponse,
   DefaultError: mapDefaultErrorResponse,
   DatabaseError: mapDefaultErrorResponse,
+  UniqueConstraintError: mapUniqueConstraintErrorResponse,
 };
 
 const handleError = (err, res) => {
-  const { message } = err;
-  const { statusCode } = (mappingInstanceErrors[err.constructor.name]
+  const { statusCode, message } = (mappingInstanceErrors[err.constructor.name]
       && mappingInstanceErrors[err.constructor.name](err))
     || mappingInstanceErrors.DefaultError(err);
 

@@ -13,13 +13,16 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^4.2.0",
+    "mysql2": "^2.2.5",
     "ramda": "^0.27.1",
+    "sequelize": "^6.3.5",
     "swagger-ui-express": "^4.1.5"
   },
   "devDependencies": {
     "eslint": "^7.15.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "sequelize-cli": "^6.2.0"
   },
   "scripts": {
     "lint": "eslint \"**/*.js\"",
@@ -27,7 +30,9 @@
     "start": "node app/app.js",
     "test": "npm test",
     "prestart:dev": "npm run lint",
-    "start:dev": "nodemon app/app.js"
+    "start:dev": "nodemon app/app.js",
+    "migrations": "sequelize db:migrate",
+    "migrations:undo": "sequelize db:migrate:undo"
   },
   "repository": {
     "type": "git",

@@ -1,11 +1,11 @@
-const { serverError } = require('../helpers/error');
+const userService = require('../services/user');
 
 const createUser = async (req, res, next) => {
   try {
-    throw new Error('asdasd');
+    await userService.createOne(req.body);
     res.sendStatus(201);
   } catch (error) {
-    next(serverError(500, error.message));
+    next(error);
   }
 };
 
