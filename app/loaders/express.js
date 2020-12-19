@@ -1,13 +1,16 @@
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const swaggerUi = require('swagger-ui-express');
+
 const routes = require('../api');
+const documentation = require('../../documentation');
 const { handleError } = require('../helpers/error');
 
 module.exports = async (app) => {
   app.use(helmet());
   app.use(bodyParser.json());
   app.use('/', routes());
-
+  app.use('/docs', swaggerUi.serve, swaggerUi.setup(documentation));
   app.get('/health', (req, res) => {
     res.status(200).end();
   });
