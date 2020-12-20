@@ -11,7 +11,6 @@ module.exports = {
     version: '1.0.0',
     title: 'challengecryptocurrencies',
     description: 'Solución del reto el cuál es un wrapper de CoinGecko',
-    termsOfService: '',
   },
   servers: [
     {

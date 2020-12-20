@@ -52,8 +52,10 @@ const handleError = (err, res) => {
 };
 
 const serverError = (status, message) => new GeneralError(status, message);
+const loginError = () => new GeneralError(401, 'Username or password incorrect');
 
 module.exports = {
   serverError,
   handleError,
+  loginError,
 };

@@ -27,6 +27,9 @@ const config = {
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
   },
+  auth: {
+    secret: process.env.JWT_SECRET,
+  },
 };
 
 const environmentConfig = assignObject(config, customConfig);
