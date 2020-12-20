@@ -3,8 +3,11 @@ const jwt = require('../helpers/jwt');
 const config = require('../config');
 
 const createOne = async (userFields) => userRepository.createOne(userFields);
-const getByUsername = async (username) => userRepository.getByUsername({
+const getByUsername = (username) => userRepository.findOne({
   where: { username },
+});
+const getById = (id) => userRepository.findOne({
+  where: { id },
 });
 
 const generateToken = (user) => jwt.sign({
@@ -16,4 +19,5 @@ module.exports = {
   createOne,
   getByUsername,
   generateToken,
+  getById,
 };

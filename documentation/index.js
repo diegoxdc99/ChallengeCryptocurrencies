@@ -21,6 +21,7 @@ module.exports = {
   security: [],
   tags: [
     { name: 'Users', description: 'Internal endpoints for users' },
+    { name: 'Users', description: 'Internal endpoints for coins' },
   ],
   paths,
   components: {

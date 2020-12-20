@@ -29,6 +29,10 @@ const config = {
   },
   auth: {
     secret: process.env.JWT_SECRET,
+    algorithms: [process.env.JWT_ALGORITHM],
+  },
+  coin: {
+    url: process.env.COIN_BASE_URL,
   },
 };
 

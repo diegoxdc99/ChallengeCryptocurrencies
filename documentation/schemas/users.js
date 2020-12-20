@@ -46,4 +46,8 @@ module.exports = {
     type: 'object',
     properties: newUser,
   },
+  bearerAuth: {
+    type: 'http',
+    scheme: 'bearer',
+  },
 };

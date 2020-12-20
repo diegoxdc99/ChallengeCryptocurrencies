@@ -12,5 +12,9 @@ module.exports = {
   },
   auth: {
     secret: { doc: 'Secret to generato token', default: '', format: String },
+    algorithms: { doc: 'Algorithm to JWT token', default: '', format: Array },
+  },
+  coin: {
+    url: { doc: 'Base url coin api', default: '', format: String },
   },
 };

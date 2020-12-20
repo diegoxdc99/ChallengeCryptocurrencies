@@ -53,9 +53,11 @@ const handleError = (err, res) => {
 
 const serverError = (status, message) => new GeneralError(status, message);
 const loginError = () => new GeneralError(401, 'Username or password incorrect');
+const resourceNotFound = (resource) => new GeneralError(404, `${resource} not found`);
 
 module.exports = {
   serverError,
   handleError,
   loginError,
+  resourceNotFound,
 };
