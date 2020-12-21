@@ -2,6 +2,7 @@ const config = require('../app/config');
 const paths = require('./paths');
 const responses = require('./responses');
 const schemas = require('./schemas');
+const parameters = require('./parameters');
 
 const port = config.api.port || 8080;
 
@@ -27,6 +28,7 @@ module.exports = {
   components: {
     schemas,
     responses,
+    parameters,
     securitySchemes: {
       bearer: {
         type: 'http',

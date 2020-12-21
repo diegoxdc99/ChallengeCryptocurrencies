@@ -13,6 +13,9 @@ module.exports = {
         200: {
           $ref: '#/components/responses/getAllCoins',
         },
+        401: {
+          $ref: '#/components/responses/unauthorized',
+        },
         500: {
           $ref: '#/components/responses/defaultError',
         },

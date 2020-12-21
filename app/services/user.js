@@ -15,9 +15,15 @@ const generateToken = (user) => jwt.sign({
   id: user.id,
 }, config.auth.secret);
 
+const getCoins = (username) => userRepository.getCoins(username);
+
+const addCoin = (user, coin) => userRepository.addCoin(user, coin);
+
 module.exports = {
   createOne,
   getByUsername,
   generateToken,
   getById,
+  getCoins,
+  addCoin,
 };

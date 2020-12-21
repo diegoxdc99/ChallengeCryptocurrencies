@@ -53,4 +53,30 @@ module.exports = {
       },
     },
   },
+  '/users/coins/{coinId}': {
+    post: {
+      tags: ['Users'],
+      summary: 'Assign a coin to a user',
+      operationId: 'addCoin',
+      security: [
+        {
+          bearer: [],
+        },
+      ],
+      parameters: [
+        { $ref: '#/components/parameters/id' },
+      ],
+      responses: {
+        201: {
+          description: 'Create user success',
+        },
+        401: {
+          $ref: '#/components/responses/unauthorized',
+        },
+        500: {
+          $ref: '#/components/responses/defaultError',
+        },
+      },
+    },
+  },
 };

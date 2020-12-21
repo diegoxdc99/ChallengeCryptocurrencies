@@ -36,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+      models.User.belongsToMany(models.Coin, { through: 'Users_Coins' });
       createHooks(models.User);
     }
   }

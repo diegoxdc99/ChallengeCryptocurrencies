@@ -1,3 +1,4 @@
+const coinRepository = require('../repository/coin');
 const http = require('../utils/http');
 const config = require('../config');
 
@@ -14,6 +15,13 @@ const getAll = (currency, page = 1) => http.request({
   },
 });
 
+const getCoinById = (id) => coinRepository.findOne({
+  where: {
+    id,
+  },
+});
+
 module.exports = {
   getAll,
+  getCoinById,
 };
