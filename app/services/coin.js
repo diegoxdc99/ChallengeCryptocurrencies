@@ -15,6 +15,20 @@ const getAll = (currency, page = 1) => http.request({
   },
 });
 
+const getDetailsCoin = (coinId) => http.request({
+  url: config.coin.url,
+  path: `/coins/${coinId}`,
+  method: 'get',
+  params: {
+    ocalization: false,
+    tickers: false,
+    market_data: true,
+    community_data: false,
+    developer_data: false,
+    sparkline: false,
+  },
+});
+
 const getCoinById = (id) => coinRepository.findOne({
   where: {
     id,
@@ -24,4 +38,5 @@ const getCoinById = (id) => coinRepository.findOne({
 module.exports = {
   getAll,
   getCoinById,
+  getDetailsCoin,
 };

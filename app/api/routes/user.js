@@ -15,5 +15,6 @@ module.exports = (app) => {
 
   route.post('/', validator.body(newUser), user.createUser);
   route.post('/login', passport.authenticate('basic', { session: false }), user.generateToken);
+  route.get('/coins', auth(config.auth), getUserToken, user.getTopCoins);
   route.post('/coins/:coinId', auth(config.auth), getCoin, getUserToken, user.addCoin);
 };

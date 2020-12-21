@@ -14,7 +14,7 @@ module.exports = {
     content: {
       'application/json': {
         schema: {
-          $ref: '#/components/schemas/defaultError',
+          $ref: '#/components/schemas/unauthorized',
         },
       },
     },

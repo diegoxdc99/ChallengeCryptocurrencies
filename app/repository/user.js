@@ -1,14 +1,13 @@
 const { User } = require('../models');
-const { Coins } = require('../models');
+const { Coin } = require('../models');
 
 const createOne = (userFields) => User.create(userFields);
 const findOne = (query) => User.findOne(query);
 
-const getCoins = (username) => User.findAll({
+const getCoins = (username) => User.findOne({
   where: { username },
-  attributes: [],
   include: {
-    model: Coins,
+    model: Coin,
     through: {
       attributes: [],
     },

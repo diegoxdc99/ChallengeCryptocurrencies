@@ -31,8 +31,18 @@ const addCoin = async (req, res, next) => {
   }
 };
 
+const getTopCoins = async (req, res, next) => {
+  try {
+    const coinsDetail = await userService.getTopCoins(req.userRegistered.username);
+    res.status(200).send(coinsDetail);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createUser,
   generateToken,
   addCoin,
+  getTopCoins,
 };

@@ -8,4 +8,22 @@ module.exports = {
     },
     required: true,
   },
+  limitTopCoins: {
+    name: 'limit',
+    in: 'query',
+    description: 'upper limit of coins',
+    schema: {
+      $ref: '#/components/schemas/topCoins',
+    },
+    required: true,
+  },
+  order: {
+    name: 'order',
+    in: 'query',
+    description: 'Method to sort the results, by default descending',
+    schema: {
+      $ref: '#/components/schemas/order',
+    },
+    required: true,
+  },
 };

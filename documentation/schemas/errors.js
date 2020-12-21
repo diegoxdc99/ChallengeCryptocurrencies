@@ -26,4 +26,8 @@ module.exports = {
     type: 'object',
     properties: createError(409, 'Field username must by unique'),
   },
+  unauthorized: {
+    type: 'object',
+    properties: createError(401, 'Unauthorized'),
+  },
 };
