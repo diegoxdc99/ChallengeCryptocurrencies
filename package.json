@@ -41,7 +41,9 @@
     "prestart:dev": "npm run lint",
     "start:dev": "nodemon app/app.js",
     "migrations": "sequelize db:migrate",
-    "migrations:undo": "sequelize db:migrate:undo"
+    "migrations:undo": "sequelize db:migrate:undo",
+    "migrations:seed": "sequelize db:seed:all",
+    "migrations:seed:undo": "sequelize db:seed:undo"
   },
   "repository": {
     "type": "git",
