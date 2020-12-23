@@ -1,10 +1,13 @@
 const userService = require('../services/user');
+const { logger } = require('../logger');
 
 const createUser = async (req, res, next) => {
   try {
+    logger.info('Creating a user');
     await userService.createOne(req.body);
     res.sendStatus(201);
   } catch (error) {
+    logger.info(`Error creating user: error: ${error}`);
     next(error);
   }
 };
@@ -19,11 +22,13 @@ const addCoin = async (req, res, next) => {
     await userService.addCoin(req.userRegistered, req.coin);
     res.sendStatus(201);
   } catch (error) {
+    logger.info(`Error associating currency to a user: error: ${error}`);
     next(error);
   }
 };
 
 const getTopCoins = async (req, res, next) => {
+  logger.info('Getting the top coins of a user');
   try {
     const coinsDetail = await userService.getTopCoins(req.userRegistered.username, {
       limit: req.query.limit,
@@ -31,6 +36,7 @@ const getTopCoins = async (req, res, next) => {
     });
     res.status(200).send(coinsDetail);
   } catch (error) {
+    logger.info(`Error getting the top coins of a user: error: ${error}`);
     next(error);
   }
 };

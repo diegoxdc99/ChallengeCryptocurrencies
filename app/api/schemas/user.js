@@ -1,10 +1,12 @@
 const Joi = require('joi');
 const { ORDER } = require('../../constants/order');
 
+const regexName = /^[a-z0-9 ]+$/i;
+
 const newUser = Joi.object().keys({
-  firstName: Joi.string().alphanum().min(2).max(50)
+  firstName: Joi.string().min(2).max(50).regex(regexName)
     .required(),
-  lastName: Joi.string().alphanum().min(2).max(50)
+  lastName: Joi.string().min(2).max(50).regex(regexName)
     .required(),
   username: Joi.string().alphanum().min(2).max(20)
     .required(),

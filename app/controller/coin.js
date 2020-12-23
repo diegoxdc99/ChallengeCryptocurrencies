@@ -1,8 +1,10 @@
 const { coinPreferedCurrency } = require('../mappers/coin');
 const coinService = require('../services/coin');
+const { logger } = require('../logger');
 
 const getAll = async (req, res, next) => {
   try {
+    logger.info('Getting all available currencies');
     const { currency } = req.userRegistered;
     let allCoins = [];
     let coins = {};
@@ -17,6 +19,7 @@ const getAll = async (req, res, next) => {
     const coinsReponse = allCoins.map(coinPreferedCurrency);
     res.status(200).send({ data: coinsReponse });
   } catch (error) {
+    logger.info(`Error creating user: error: ${error}`);
     next(error);
   }
 };
