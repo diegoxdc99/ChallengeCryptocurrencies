@@ -2,6 +2,7 @@
 Solución del reto el cuál es un wrapper de CoinGecko
 
 - - - -
+
 - [ChallengeCryptocurrencies](#challengecryptocurrencies)
 - [Instalación](#instalación)
   - [Paquetes instalados de forma global](#paquetes-instalados-de-forma-global)
@@ -13,6 +14,7 @@ Solución del reto el cuál es un wrapper de CoinGecko
     - [4 Ejecutar los seed](#4-ejecutar-los-seed)
     - [5 Ejecutar el proyecto](#5-ejecutar-el-proyecto)
 - [Ejecutar las pruebas unitarias](#ejecutar-las-pruebas-unitarias)
+- [Swagger](#swagger)
 
 # Instalación
 ## Paquetes instalados de forma global
@@ -47,3 +49,6 @@ Para desarrollo `npm run start:dev`
 # Ejecutar las pruebas unitarias
 Para ejecutar las pruebas unitarias y generar la covertura se puede ejecutar el siguiente comando:
 `npm test`
+
+# Swagger
+La documentación se encuentra en el endpoint `{server}/docs`
